@@ -1,5 +1,7 @@
 package school;
 
+import CinExceptions.NumSchoolExceptions;
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -74,7 +76,9 @@ public class Main {
 
                 for (Map.Entry<String, List<Student>> entry : vedomost.entrySet()){
 
-                    SchoolClass classForVed = new SchoolClass(1 ,entry.getValue());
+                    try {
+                        SchoolClass classForVed = new SchoolClass(1, entry.getValue());
+
 
                     out.write(entry.getKey());
                     out.newLine();
@@ -90,11 +94,15 @@ public class Main {
                     out.newLine();
                     out.write("--------------------");
                     out.newLine();
+                    } catch (NumSchoolExceptions e){
+                        System.out.println("Не подходит: " + e.getMessage());
+                    }
                 }
 
             }
 
             out.close();
+
 
             //5 ZADANIE
             System.out.println("5 ZADAMIE");

@@ -14,12 +14,12 @@ public class Student implements Comparable<Student>{
 
     //Конструкторы
 
-    public Student(){
+    public Student() throws NameExceptions, LastNameExceptions{
         this.name = "";
         this.lastName = "";
     }
 
-    public Student(String name, String lastName, Subject subject){
+    public Student(String name, String lastName, Subject subject) throws NameExceptions, LastNameExceptions{
         setName(name);
         setLastName(lastName);
         setSubject(subject);
@@ -41,7 +41,7 @@ public class Student implements Comparable<Student>{
 
     //Сеттеры
 
-    public void setName(String name) {
+    public void setName(String name) throws NameExceptions{
 
         if (name == null || name.trim().isEmpty()) {
             throw new NameExceptions("Имя не может быть пустым");
@@ -55,7 +55,7 @@ public class Student implements Comparable<Student>{
 
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws LastNameExceptions{
 
         if (lastName == null || lastName.trim().isEmpty()) {
             throw new LastNameExceptions("Фамилия не может быть пустой");
